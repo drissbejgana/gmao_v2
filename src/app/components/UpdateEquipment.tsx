@@ -9,7 +9,7 @@ import { redirect } from 'next/navigation';
 
 
 
-const UpdateEquipment = ({id}:{id:string}) => {
+const UpdateEquipment = ({id,role}:{id:string,role:string}) => {
 
 const [equipment,setEquipment]=useState<Equipment>({ _id:'',name:'',marque:'',service:'',quantite:0,etat:'bon',reference:'',referenceInterne:'',contactFournisseur:'',salle:''})
 const [laoding,setLoading]=useState(true)
@@ -85,7 +85,7 @@ const handleClick= async()=>{
 
             <div className="mb-5">
                         <label htmlFor="lname"   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                        <input type="text" disabled={session?.user?.role!="Admin"} value={equipment.name}  onChange={(e:ChangeEvent<HTMLInputElement>)=>setEquipment({...equipment,name:e.currentTarget.value})}  id="lname" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
+                        <input type="text" disabled={role!="Admin"} value={equipment.name}  onChange={(e:ChangeEvent<HTMLInputElement>)=>setEquipment({...equipment,name:e.currentTarget.value})}  id="lname" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
             </div>
 
 
@@ -99,28 +99,28 @@ const handleClick= async()=>{
 
               <div className="mb-5">
                         <label htmlFor="Marque"  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Marque</label>
-                        <input disabled={session?.user?.role!="Admin"} value={equipment.marque} onChange={(e:ChangeEvent<HTMLInputElement>)=>setEquipment({...equipment,marque:e.currentTarget.value})} type="text"   id="Marque" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
+                        <input disabled={role!="Admin"} value={equipment.marque} onChange={(e:ChangeEvent<HTMLInputElement>)=>setEquipment({...equipment,marque:e.currentTarget.value})} type="text"   id="Marque" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
               </div>
 
               <div className="mb-5">
                         <label htmlFor="Quantite"  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quantite</label>
-                        <input disabled={session?.user?.role!="Admin"} value={equipment.quantite} onChange={(e:ChangeEvent<HTMLInputElement>)=>setEquipment({...equipment,quantite:parseInt(e.currentTarget.value)})} type="number"   id="Quantite" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
+                        <input disabled={role!="Admin"} value={equipment.quantite} onChange={(e:ChangeEvent<HTMLInputElement>)=>setEquipment({...equipment,quantite:parseInt(e.currentTarget.value)})} type="number"   id="Quantite" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
               </div>
 
               <div className="mb-5">
                         <label htmlFor="reference"  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">reference</label>
-                        <input disabled={session?.user?.role!="Admin"} value={equipment.reference} onChange={(e:ChangeEvent<HTMLInputElement>)=>setEquipment({...equipment,reference:e.currentTarget.value})} type="text"   id="reference" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
+                        <input disabled={role!="Admin"} value={equipment.reference} onChange={(e:ChangeEvent<HTMLInputElement>)=>setEquipment({...equipment,reference:e.currentTarget.value})} type="text"   id="reference" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
               </div>
 
                             
               <div className="mb-5">
                         <label htmlFor="referenceInterne"  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">referenceInterne</label>
-                        <input disabled={session?.user?.role!="Admin"} value={equipment.referenceInterne} onChange={(e:ChangeEvent<HTMLInputElement>)=>setEquipment({...equipment,referenceInterne:e.currentTarget.value})} type="text"   id="referenceInterne" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
+                        <input disabled={role!="Admin"} value={equipment.referenceInterne} onChange={(e:ChangeEvent<HTMLInputElement>)=>setEquipment({...equipment,referenceInterne:e.currentTarget.value})} type="text"   id="referenceInterne" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
               </div>
 
               <div className="mb-5">
                         <label htmlFor="contactFournisseur"  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">contactFournisseur</label>
-                        <input disabled={session?.user?.role!="Admin"} value={equipment.contactFournisseur} onChange={(e:ChangeEvent<HTMLInputElement>)=>setEquipment({...equipment,contactFournisseur:e.currentTarget.value})} type="text"   id="contactFournisseur" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
+                        <input disabled={role!="Admin"} value={equipment.contactFournisseur} onChange={(e:ChangeEvent<HTMLInputElement>)=>setEquipment({...equipment,contactFournisseur:e.currentTarget.value})} type="text"   id="contactFournisseur" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
               </div>
 
 

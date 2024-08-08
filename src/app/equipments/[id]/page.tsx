@@ -1,6 +1,8 @@
 
+import { options } from "@/app/api/auth/[...nextauth]/options";
 import UpdateEquipment from "@/app/components/UpdateEquipment";
-import { useState } from "react";
+import { getServerSession } from "next-auth";
+
 
 
 type Props = {
@@ -8,13 +10,14 @@ type Props = {
   };
   
 
-export default function Page({params}:Props) {
+export default async function Page({params}:Props) {
+  const session = await getServerSession(options);
 
 
 
   return (
         <>
-            <UpdateEquipment id={params.id} />
+            <UpdateEquipment id={params.id}  role={session?.user?.role}  />
         </>
   );
 }

@@ -9,6 +9,9 @@ export default async function Home() {
 
   const session = await getServerSession(options);
 
+  if(!session){
+    redirect("/api/auth/signin?callbackUrl=/");
+  }
 
 if(session?.user.role=="Admin"){
   redirect('/admin/equipments')
