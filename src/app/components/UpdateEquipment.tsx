@@ -15,12 +15,7 @@ const [equipment,setEquipment]=useState<Equipment>({ _id:'',name:'',marque:'',se
 const [laoding,setLoading]=useState(true)
 
 
-const { data: session } = useSession({
-  required: true,
-  onUnauthenticated() {
-    redirect("/api/auth/signin?callbackUrl=/");
-  },
-});
+
 
 
 useEffect(()=>{

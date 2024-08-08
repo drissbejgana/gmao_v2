@@ -27,6 +27,32 @@ export async function GET() {
 }
 
 
+
+// export async function GET(request: NextRequest) {
+//   await connectToDatabase();
+
+//   try {
+//       const { searchParams } = new URL(request.url);
+//       const page = parseInt(searchParams.get('page') || '1', 10);
+//       const limit = parseInt(searchParams.get('limit') || '10', 10);
+//       const skip = (page - 1) * limit;
+
+//       const equipments = await Equipment.find({}).lean().skip(skip).limit(limit).exec();
+//       const totalEquipments = await Equipment.countDocuments();
+
+//       return NextResponse.json({
+//           equipments,
+//           totalEquipments,
+//           currentPage: page,
+//           totalPages: Math.ceil(totalEquipments / limit),
+//       }, { status: 200 });
+
+//   } catch (error: any) {
+//       console.error('GET equipments error:', error);
+//       return NextResponse.json({ error: error.message }, { status: 500 });
+//   }
+// }
+
   
 export async function POST(req:NextRequest) {
     await connectToDatabase();

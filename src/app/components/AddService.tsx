@@ -60,6 +60,8 @@ export default function AddService() {
         const newuser = await AddtoServices(service);
         console.log('New Service:', newuser);
         alert("New Service added")
+      location.reload()
+
     
       } catch (error:any) {
         console.log(error.message);

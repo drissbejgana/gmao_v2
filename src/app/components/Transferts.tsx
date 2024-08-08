@@ -71,7 +71,7 @@ useEffect(()=>{
 
   return (
     <>
-    <div ref={componentRef}>
+    <div className='h-[80vh] overflow-y-scroll' ref={componentRef}>
      <h1 className="text-center text-3xl m-5">All Transferts</h1>
 
 

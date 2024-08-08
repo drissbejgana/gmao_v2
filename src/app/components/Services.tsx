@@ -46,7 +46,7 @@ useEffect(()=>{
 
 
   return (
-    <div>
+    <div className='h-[50vh] overflow-y-scroll'>
      <h1 className="text-center text-3xl m-5">All Services</h1>
 
 

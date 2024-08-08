@@ -64,7 +64,7 @@ const handleDelete=async(id:string)=>{
 
   return (
    <> 
-   <div ref={componentRef}>
+   <div ref={componentRef} className='h-[50vh] overflow-y-scroll'>
      <h1 className="text-center text-3xl m-5">All Equipments</h1>
 
 

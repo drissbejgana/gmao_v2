@@ -51,12 +51,7 @@ export default function Page() {
   const [users,setUsers]=useState<User[]>([])
   const [services,setServices]=useState<Service[]>([])
 
-  // const { data: session } = useSession({
-  //   required: true,
-  //   onUnauthenticated() {
-  //     redirect("/api/auth/signin?callbackUrl=/");
-  //   },
-  // });
+
 
 
 useEffect(()=>{
@@ -91,7 +86,7 @@ useEffect(()=>{
   }
 
  }
- 
+
   const handleClick= async()=>{
      
     if(!user.name || !user.role || !user.email || !user.password){
