@@ -19,7 +19,7 @@ export default function Sidebar() {
         },
       });
       
-     const role= session?.user.role 
+     const role= session?.user?.role
 
  const [notification,setNotification]=useState(0)
 
