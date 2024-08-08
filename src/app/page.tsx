@@ -3,6 +3,7 @@
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import Salles from "./components/Salles";
+import TransferEquipment from "./components/TransferEquipment";
 
 export default function Home() {
 
