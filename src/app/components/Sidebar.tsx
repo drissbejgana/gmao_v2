@@ -1,46 +1,23 @@
-'use client'
 import { initFlowbite } from 'flowbite'
 import { useSession } from 'next-auth/react';
 import Link from 'next/link'
 import { redirect } from 'next/navigation';
 import { useEffect, useState } from 'react'
 import { Demande } from '../demande/page';
+import { getServerSession } from 'next-auth';
+import { options } from '../api/auth/[...nextauth]/options';
+import Notification from './notification';
 
 
 
 
-export default function Sidebar() {
+export default async function Sidebar() {
 
 
-    const { data: session } = useSession({
-        required: true,
-        onUnauthenticated() {
-          redirect("/api/auth/signin?callbackUrl=/");
-        },
-      });
+
+    const session = await getServerSession(options);
       
      const role= session?.user?.role
-
- const [notification,setNotification]=useState(0)
-
-    useEffect(()=>{
-    initFlowbite()
-
-        async function fetchdata() {
-            const res=await fetch('/api/demande')
-            const data = await res.json()
-            const newdemandes=data.filter((item:Demande)=>item.is_New==true)
-            setNotification(newdemandes.length)
-
-        } 
-
-        fetchdata()
-
-
-},[notification])
-
-
-
 
 
 
@@ -126,23 +103,8 @@ export default function Sidebar() {
                                   <span className="flex-1 ms-3 whitespace-nowrap">Users</span>
                                   </Link>
                               </li>
+                              <Notification />
       
-                      <li>
-                                  <Link href={'/admin/demandes'} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                  {/* <svg className="flex-shrink-0 w-7 h-7 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m11.5 11.5 2.071 1.994M4 10h5m11 0h-1.5M12 7V4M7 7V4m10 3V4m-7 13H8v-2l5.227-5.292a1.46 1.46 0 0 1 2.065 2.065L10 17Zm-5 3h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z"/>
-                                  </svg>
-                                  <span className="flex-1 ms-3 whitespace-nowrap">Demandes</span> */}
-                                  
-                                      <button type="button" className="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                      Demandes
-                                      <span className="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
-                                      {notification}
-                                      </span>
-                                      </button>
-      
-                                  </Link>
-                      </li>
                        </>
                   }
               
