@@ -93,7 +93,7 @@ const handleClick= async()=>{
     console.log('New equipment:', newEquipment);
     setEquipment({_id:'',name:'',marque:'',service:'',quantite:0,etat:'',reference:'',referenceInterne:'',contactFournisseur:'',salle:''})
     alert("New equipment added")
-   
+    location.reload()
   } catch (error:any) {
     console.log(error.message);
     alert("ERR try again")
@@ -157,22 +157,22 @@ const handleClick= async()=>{
              
               <div className="mb-5">
                         <label htmlFor="Quantite"  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quantite</label>
-                        <input onChange={(e:ChangeEvent<HTMLInputElement>)=>setEquipment({...equipment,quantite:parseInt(e.currentTarget.value)})} type="number"   id="Quantite" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
+                        <input min={0} onChange={(e:ChangeEvent<HTMLInputElement>)=>setEquipment({...equipment,quantite:parseInt(e.currentTarget.value)})} type="number"   id="Quantite" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
               </div>
 
               <div className="mb-5">
-                        <label htmlFor="reference"  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">reference</label>
-                        <input onChange={(e:ChangeEvent<HTMLInputElement>)=>setEquipment({...equipment,reference:e.currentTarget.value})} type="text"   id="reference" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
+                        <label htmlFor="reference"  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Reference</label>
+                        <input  onChange={(e:ChangeEvent<HTMLInputElement>)=>setEquipment({...equipment,reference:e.currentTarget.value})} type="text"   id="reference" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
               </div>
 
                             
               <div className="mb-5">
-                        <label htmlFor="referenceInterne"  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">referenceInterne</label>
+                        <label htmlFor="referenceInterne"  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Reference Interne</label>
                         <input onChange={(e:ChangeEvent<HTMLInputElement>)=>setEquipment({...equipment,referenceInterne:e.currentTarget.value})} type="text"   id="referenceInterne" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
               </div>
 
               <div className="mb-5">
-                        <label htmlFor="contactFournisseur"  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">contactFournisseur</label>
+                        <label htmlFor="contactFournisseur"  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contact Fournisseur</label>
                         <input onChange={(e:ChangeEvent<HTMLInputElement>)=>setEquipment({...equipment,contactFournisseur:e.currentTarget.value})} type="text"   id="contactFournisseur" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
               </div>
 

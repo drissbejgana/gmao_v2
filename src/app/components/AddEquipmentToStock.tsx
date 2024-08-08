@@ -40,6 +40,7 @@ const handleClick= async()=>{
     console.log('New equipment:', newEquipment);
     setEquipment({_id:'',name:'',marque:'',service:'',quantite:0,etat:'',reference:'',referenceInterne:'',contactFournisseur:'',salle:''})
     alert("New equipment added To Stock")
+    location.reload()
    
   } catch (error:any) {
     console.log(error.message);

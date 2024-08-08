@@ -74,6 +74,7 @@ export default function AddSalle() {
         const newsalle = await AddtoSalles(salle);
         console.log('New Salle:', newsalle);
         alert("New Salle added")
+        location.reload()
     
       } catch (error:any) {
         console.log(error.message);

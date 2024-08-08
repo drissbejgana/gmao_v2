@@ -51,6 +51,8 @@ const handleDelete=async(id:string)=>{
     });
     if(response.ok){
       alert('deleted successfully')
+      location.reload()
+      
     }
 
   } catch (error:any) {
