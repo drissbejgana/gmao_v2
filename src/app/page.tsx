@@ -1,25 +1,22 @@
-'use client'
 
-import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import Salles from "./components/Salles";
-import TransferEquipment from "./components/TransferEquipment";
+import { getServerSession } from "next-auth";
+import { options } from "./api/auth/[...nextauth]/options";
 
-export default function Home() {
 
-  const { data: session } = useSession({
-    required: true,
-    onUnauthenticated() {
-      redirect("/api/auth/signin?callbackUrl=/");
-    },
-  });
+export default async function Home() {
+
+  const session = await getServerSession(options);
+
+
 if(session?.user.role=="Admin"){
   redirect('/admin/equipments')
 }
 
   return (
     <main className="">
-      <Salles/>
+      <Salles service={session?.user?.service} />
     </main>
   );
 }
