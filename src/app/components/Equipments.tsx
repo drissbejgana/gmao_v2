@@ -53,7 +53,7 @@ useEffect(()=>{
 
 useEffect(()=>{
 
-  if(search=='' || filtredEquipments.length<=0){
+  if(search==''){
     setfiltredEquipments(equipments)
     return
   }
@@ -65,8 +65,8 @@ useEffect(()=>{
 
 useEffect(()=>{
   
-  if(byEtat=='All' || filtredEquipments.length<=0 ){
-    setfiltredEquipments(equipments)
+  if(byEtat=='All'){
+     setfiltredEquipments(equipments)
     return
   }
   

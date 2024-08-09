@@ -45,7 +45,7 @@ useEffect(()=>{
 useEffect(()=>{
 
   console.log(search)
-  if(search=='' || filtredEquipments.length<=0){
+  if(search==''){
     setfiltredEquipments(equipments)
     return
   }
@@ -58,7 +58,7 @@ useEffect(()=>{
 
 useEffect(()=>{
   
-  if(byEtat=='All' || filtredEquipments.length<=0 ){
+  if(byEtat=='All' ){
     setfiltredEquipments(equipments)
     return
   }
