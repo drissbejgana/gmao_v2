@@ -14,7 +14,7 @@ if (!process.env.MONGODB_URI) {
 export async function GET() {
     await connectToDatabase();
     try {
-         const transferts = await Transfert.find({}).lean().exec();
+         const transferts = await Transfert.find({}).sort({ date: -1 }).lean().exec();
          const services = await Service.find({}).lean().exec();
          const salles = await Salle.find({}).lean().exec();
 

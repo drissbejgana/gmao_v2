@@ -120,14 +120,7 @@ export default async function Sidebar() {
 
                         <span className="flex-1 ms-3 whitespace-nowrap">Request For Equipment</span>
                         </Link>
-                        <Link href={'/transfer'} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 
-                        <svg className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                                  <path fill-rule="evenodd" d="M3 4a1 1 0 0 0-.822 1.57L6.632 12l-4.454 6.43A1 1 0 0 0 3 20h13.153a1 1 0 0 0 .822-.43l4.847-7a1 1 0 0 0 0-1.14l-4.847-7a1 1 0 0 0-.822-.43H3Z" clip-rule="evenodd"/>
-                        </svg>
-
-                            <span className="flex-1 ms-3 whitespace-nowrap">transfer</span>
-                        </Link>
                     </li>
                     }
 

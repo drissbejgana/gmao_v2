@@ -25,7 +25,7 @@ export default function Page() {
               <div className="grid grid-cols-1 md:grid-cols-2 my-5">
                     <AddEquipment/>
                 <div>
-                <TransferEquipment/>
+                {/* <TransferEquipment/> */}
                     <AddEquipmentFromStock/>
                 </div>  
               </div>

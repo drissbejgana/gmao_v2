@@ -25,6 +25,7 @@ const [transferts,setTransferts]=useState<Transfer[]>([])
 const [services,setServices]=useState<Service[]>([])
 const [salles,setSalles]=useState<Salle[]>([])
 const [laoding,setLoading]=useState(true)
+const [referesh,setRefresh]=useState(false)
 
 const componentRef = useRef<HTMLDivElement>(null);
   
@@ -48,26 +49,26 @@ useEffect(()=>{
    } 
    fetchdata()
 
-},[])
+},[referesh])
 
-// const handleDelete=async(id:string)=>{
-//   try {
-//     const response = await fetch(`/api/equipments/${id}`, {
-//       method: 'Delete',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     });
-//     if(response.ok){
-//       alert('deleted successfully')
-//     }
 
-//   } catch (error:any) {
-//         throw Error('error deleting')
-//   }
+const handleDelete=async(id:string)=>{
+  try {
+    const response = await fetch(`/api/transferts/${id}`, {
+      method: 'Delete',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+       if(response.ok){
+  alert('tarnsfer deleted successfully'   )
+     setRefresh(!referesh)
+    }
+  } catch (error:any) {
+        throw Error('error deleting')
+  }
 
-//  }
-
+ }
 
   return (
     <>
@@ -95,6 +96,9 @@ useEffect(()=>{
                           Movement Date
                           </th>
                         
+                          <th scope="col" className="px-6 py-3">
+                        Action
+                          </th>
                     </tr>
                 </thead>
 
@@ -130,7 +134,11 @@ useEffect(()=>{
                         <td className="px-6 py-4">
                            {item.date}
                         </td>
-                       
+                      <td className="px-6 flex  py-4">
+
+                            <button onClick={(e)=>handleDelete(item._id)} className="font-medium mx-2 text-red-600 dark:text-red-500 hover:underline" >Remove</button>
+                  
+                        </td>
                         
                     </tr>)
 

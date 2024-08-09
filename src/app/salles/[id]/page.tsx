@@ -39,6 +39,26 @@ useEffect(()=>{
 },[])
 
  
+const handleDelete=async(id:string)=>{
+  try {
+    const response = await fetch(`/api/equipments/${id}`, {
+      method: 'Delete',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    if(response.ok){
+      alert('deleted successfully')
+      location.reload()
+      
+    }
+
+  } catch (error:any) {
+        throw Error('error deleting')
+  }
+
+ }
+
         
   return (
     <>
@@ -109,6 +129,9 @@ useEffect(()=>{
                             <Link className="font-medium mx-2 text-blue-600 dark:text-blue-500 hover:underline" href={`/equipments/${item._id}`}>
                               Edit
                             </Link>
+
+                            <button onClick={(e)=>handleDelete(item._id)} className="font-medium mx-2 text-red-600 dark:text-red-500 hover:underline" >Remove</button>
+                  
                         </td>
                     </tr>)
                     }

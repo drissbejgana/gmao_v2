@@ -5,16 +5,16 @@ import { Salle } from './AddSalle';
 import { Equipment } from './AddEquipment';
 
 
-const TransferEquipment = () => {
+const TransferEquipment = ({equipment}: {equipment:Equipment}) => {
 
-const [transfer,setTransfer]=useState({_id:'',equipment:'',service:'',salle:''})
+const [transfer,setTransfer]=useState({_id:'',equipment:equipment._id,service:'',salle:''})
 
 
 const [services,setServices]=useState<Service[]>([])
 const [equipments,setEquipments]=useState<Equipment[]>([])
 const [salles,setSalles]=useState<Salle[]>([])
 const [sallesByservice,setSallesByservice]=useState<Salle[]>([])
-
+console.log(equipment)
 useEffect(()=>{
     
     async function fetchdata() {
@@ -67,7 +67,9 @@ const handleClick=async()=>{
           throw new Error('Failed to add Leave');
         }
         else
-        alert('Equipment transferred successfully')
+        {alert('Equipment transferred successfully')
+          location.reload()
+        }
       
 
 
@@ -79,19 +81,12 @@ const handleClick=async()=>{
             <h1 className="text-center text-3xl m-2">Transfer Equipment</h1>
 
 
-           
-            <div className="mb-5">
-                <label htmlFor="FormSelect" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Equipment</label>
-                 <select onChange={(e:ChangeEvent<HTMLSelectElement>)=>setTransfer({...transfer,equipment:e.currentTarget.value})} name="field"  id="FormSelect" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" aria-invalid="false">
-                 <option selected disabled>Select Equipment</option>
-                      {
-                        equipments.map((item:Equipment)=>
-                        <option key={item._id} value={item._id} >{item.name} ({services.find((service:Service)=>service._id==item.service)?.name}) ({salles.find((salle:Salle)=>salle._id==item.salle)?.name})</option>
-                        
-                        )
-                      }
-              </select>
-             </div>
+
+
+          <div className="mb-5">
+               <label htmlFor="lname"   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name : </label>
+               <input type="text"  value={ `${equipment.name} ( ${ services.find((service:Service)=>service._id==equipment.service)?.name} ${ salles.find((salle:Salle)=>salle._id==equipment.salle)?.name} )`}  disabled  id="lname" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
+            </div>
 
             <div className="mb-5">
                   <label htmlFor="FormSelect1" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">New Service (To)</label>
