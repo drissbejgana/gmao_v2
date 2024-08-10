@@ -11,6 +11,7 @@ export const metadata = {
   }: {
     children: React.ReactNode;
   }) {
+    
     const session = await getServerSession(options);
     if(!session){
       redirect("/api/auth/signin?callbackUrl=/"); 
