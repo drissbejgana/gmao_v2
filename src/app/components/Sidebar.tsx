@@ -18,6 +18,7 @@ export default async function Sidebar() {
     const session = await getServerSession(options);
       
      const role= session?.user?.role
+     const email= session?.user?.email
 
 
 
@@ -49,8 +50,10 @@ export default async function Sidebar() {
               
 
              
-                 { role=="Admin" &&  <>
-                    <li>
+                 { (role=="Admin"  ) &&  <>
+                    {email!="zioua@zioua.com" && <>
+                    
+                        <li>
                         <Link  href={'/admin/equipments'} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
 
                         <svg className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
@@ -59,8 +62,7 @@ export default async function Sidebar() {
                         <span className="flex-1 ms-3 whitespace-nowrap">Equipments</span>
                         </Link>
                     </li>
-                    
-                       <li>
+                    <li>
                                   <Link  href={'/admin/services'} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
       
                                   <svg className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
@@ -70,7 +72,11 @@ export default async function Sidebar() {
       
                                   <span className="flex-1 ms-3 whitespace-nowrap">Services</span>
                                   </Link>
-                              </li>
+                      </li>
+                    </>
+                    }
+                    
+                       
       
                           <li>
                                   <Link href={'/admin/stock'} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
