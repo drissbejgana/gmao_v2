@@ -13,9 +13,18 @@ export default  function EtatNotification() {
  const [notification,setNotification]=useState(0)
  const [equipments,setEquipments]=useState<Equipment[]>([])
 
-    useEffect(()=>{
+ useEffect(()=>{
     initFlowbite()
-0
+        async function fetchdata() {
+            const res=await fetch('/api/equipments')
+            const data = await res.json()
+            const panne=data.equipments.filter((item:Equipment)=>item.etat=='panne')
+            setEquipments(panne)
+            setNotification(panne.length)
+            console.log(panne.length)
+        } 
+
+        fetchdata()
 
 
 },[notification])
