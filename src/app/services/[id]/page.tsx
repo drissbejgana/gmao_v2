@@ -16,7 +16,7 @@ export default async function Page({params}:Props) {
 
         
   return (
-    <Salles service={params.id}  />
+    <Salles  service={params.id}  />
   );
   
 }
