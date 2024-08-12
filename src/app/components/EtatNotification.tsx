@@ -15,16 +15,7 @@ export default  function EtatNotification() {
 
     useEffect(()=>{
     initFlowbite()
-        async function fetchdata() {
-            const res=await fetch('/api/equipments')
-            const data = await res.json()
-            const panne=data.equipments.filter((item:Equipment)=>item.etat=='panne')
-            setEquipments(panne)
-            setNotification(panne.length)
-            console.log(panne.length)
-        } 
-
-        fetchdata()
+0
 
 
 },[notification])

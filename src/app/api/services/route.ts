@@ -34,7 +34,7 @@ export async function POST(req:NextRequest) {
 
       const {name,location}=body
     
-         const service=new Service({name,location})
+          const service=new Service({name,location})
           const neweService =await service.save()
 
          return NextResponse.json(neweService,{status:200})

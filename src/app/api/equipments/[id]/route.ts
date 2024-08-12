@@ -97,7 +97,7 @@ export async function DELETE(request: NextRequest, context: any) {
       let found = false;
   
       for (const item of stock) {
-        if (item.reference === equipment.reference) {
+        if (item.referenceInterne === equipment.referenceInterne) {
           item.quantite += equipment.quantite;
           found = true;
           await item.save();
