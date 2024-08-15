@@ -93,6 +93,13 @@ export async function DELETE(request: NextRequest, context: any) {
         return NextResponse.json({ message: "Equipment not found" }, { status: 404 });
       }
   
+      if(equipment.etat=="panne"){
+        return NextResponse.json({},{status:500})
+     }
+        
+
+
+
       const stock = await Stock.find({});
       let found = false;
   

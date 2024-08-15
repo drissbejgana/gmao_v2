@@ -181,7 +181,7 @@ const handleDelete=async(id:string)=>{
                                   Edit
                                 </Link>
 
-                               { role=="Admin" && <button onClick={(e)=>handleDelete(item._id)} className="font-medium mx-2 text-red-600 dark:text-red-500 hover:underline" >Remove</button>}
+                               { (role=="Admin" &&  item.etat=="bon") && <button onClick={(e)=>handleDelete(item._id)} className="font-medium mx-2 text-red-600 dark:text-red-500 hover:underline" >Remove To Stock</button>}
                       
                             </td>
                         </tr>)

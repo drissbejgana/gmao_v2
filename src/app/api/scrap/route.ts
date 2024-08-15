@@ -1,4 +1,5 @@
-import Stock from "@/app/(models)/Stock";
+import Reforme from "@/app/(models)/Reforme";
+import Scrap from "@/app/(models)/Scrap";
 import { connectToDatabase } from "@/app/utils/dbConnect";
 import { NextRequest, NextResponse } from "next/server"
 
@@ -11,7 +12,7 @@ if (!process.env.MONGODB_URI) {
 export async function GET() {
     await connectToDatabase();
     try {
-         const equipments = await Stock.find({}).lean().exec();
+         const equipments = await Scrap.find({}).lean().exec();
 
 
          return NextResponse.json(equipments,{status:200})
@@ -31,15 +32,14 @@ export async function POST(req:NextRequest) {
 
     try {
         const body= await req.json()
-        const {name,marque,quantite,etat,reference,referenceInterne,contactFournisseur}=body
-      
-
-
-          const equipment=new Stock({name,marque,quantite,etat,reference,referenceInterne,contactFournisseur})
-          const newequipment =await equipment.save()
-
-    
-
+        const {_id,name,marque,reference,referenceInterne,contactFournisseur,salle,service}=body
+          
+        const equipment=new Scrap({name,marque,reference,salle,service,referenceInterne,contactFournisseur})
+        const newequipment =await equipment.save()
+          
+          await Reforme.findByIdAndDelete(_id)
+              
+        
          return NextResponse.json(newequipment,{status:200})
 
         }

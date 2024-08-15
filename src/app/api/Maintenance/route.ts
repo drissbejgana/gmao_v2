@@ -1,4 +1,5 @@
-import Stock from "@/app/(models)/Stock";
+import Equipment from "@/app/(models)/Equipment";
+import Maintenance from "@/app/(models)/Maintenance";
 import { connectToDatabase } from "@/app/utils/dbConnect";
 import { NextRequest, NextResponse } from "next/server"
 
@@ -11,7 +12,7 @@ if (!process.env.MONGODB_URI) {
 export async function GET() {
     await connectToDatabase();
     try {
-         const equipments = await Stock.find({}).lean().exec();
+         const equipments = await Maintenance.find({}).lean().exec();
 
 
          return NextResponse.json(equipments,{status:200})
@@ -31,15 +32,15 @@ export async function POST(req:NextRequest) {
 
     try {
         const body= await req.json()
-        const {name,marque,quantite,etat,reference,referenceInterne,contactFournisseur}=body
-      
+        const {_id,name,marque,reference,referenceInterne,contactFournisseur,salle,service}=body
 
-
-          const equipment=new Stock({name,marque,quantite,etat,reference,referenceInterne,contactFournisseur})
-          const newequipment =await equipment.save()
-
-    
-
+          
+        const equipment=new Maintenance({name,marque,reference,salle,service,referenceInterne,contactFournisseur})
+        const newequipment =await equipment.save()
+          
+          await Equipment.findByIdAndDelete(_id)
+              
+        
          return NextResponse.json(newequipment,{status:200})
 
         }

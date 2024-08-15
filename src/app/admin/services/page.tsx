@@ -18,8 +18,7 @@ export default function Page() {
 
   return (
         <>
-            <Services/>
-
+            {/* <Services/> */}
               <div className="grid grid-cols-1 md:grid-cols-2 my-5">
                 <AddService/>
                 <AddSalle/>

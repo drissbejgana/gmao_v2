@@ -2,7 +2,6 @@
 import { initFlowbite } from 'flowbite'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { Demande } from '../demande/page';
 import { Equipment } from './AddEquipment';
 
 
