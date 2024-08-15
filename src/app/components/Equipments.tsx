@@ -81,7 +81,7 @@ useEffect(()=>{
 
   return (
    <> 
-   <div ref={componentRef} className=''>
+   <div ref={componentRef} className='h-[50vh] overflow-y-scroll'>
      <h1 className="text-center text-3xl m-5">All Equipments</h1>
 
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -139,7 +139,7 @@ useEffect(()=>{
                     </tr>
                 </thead>
                 
-                <tbody className=' overflow-y-scroll'>
+                <tbody className='h-[50vh] overflow-y-scroll'>
                     {
                 filtredEquipments?.map((item)=>
                         <tr key={item._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
