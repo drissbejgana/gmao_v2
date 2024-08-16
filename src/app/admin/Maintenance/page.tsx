@@ -40,7 +40,7 @@ const handleRepaired =async(id:string)=>{
         });
         if(response.ok){
           alert('Repaired successfully')
-        setRefresh(!refersh)
+            setRefresh(!refersh)
 
         }
       } catch (error:any) {

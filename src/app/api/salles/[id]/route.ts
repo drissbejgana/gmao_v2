@@ -38,9 +38,11 @@ export async function DELETE(request: NextRequest, context: any) {
 
 
     await Salle.findByIdAndDelete(id);
+  
+    await Equipment.deleteMany({ salle: id });
 
     return NextResponse.json({ message: "Success" }, { status: 200 });
-  } catch (error:any) {
+  } catch (error: any) {
     console.error(error);
     return NextResponse.json({ message: error.message }, { status: 500 });
   }
