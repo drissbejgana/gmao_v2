@@ -1,9 +1,8 @@
 'use client'
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import { Salle } from './AddSalle';
-import { redirect, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { Loading } from './Equipments';
-import { initFlowbite } from 'flowbite';
 
 
 
@@ -30,10 +29,6 @@ useEffect(()=>{
 
 },[service,referesh])
 
-// useEffect(()=>{
-//   initFlowbite()    
-
-// },[])
 
 const handleDelete=async(id:string)=>{
 

@@ -7,6 +7,8 @@ import { Loading } from './Equipments';
 import { useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
 import TransferEquipment from './TransferEquipment';
+import AddRapportToEquipment from './AddRapportToEquipment';
+
 
 
 
@@ -127,7 +129,10 @@ const handleClick= async()=>{
         </form> : Loading()
         }
 
-        <TransferEquipment equipment={equipment}/>
+        <div>
+          <TransferEquipment equipment={equipment}/>
+          <AddRapportToEquipment equipment={equipment} />
+        </div>
     </div>
   )
 };
