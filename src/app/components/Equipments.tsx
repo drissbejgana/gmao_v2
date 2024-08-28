@@ -150,11 +150,11 @@ useEffect(()=>{
                           </Link>
                         </span>
                       </td>
-                      <th scope="row" className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                        <td className="px-6 py-4 ">
                             <div className="ps-3">
                                {item.marque}
                             </div>  
-                        </th>
+                        </td>
 
                         <td className="px-6 py-4 ">
                             <div className="flex items-center capitalize">

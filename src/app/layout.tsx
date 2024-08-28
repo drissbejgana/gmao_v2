@@ -36,15 +36,15 @@ export default async function RootLayout({
   return (
     <html lang="en">
        <AuthProvider>
-        <body className={inter.className}>
+         <body className={inter.className}>
           <DynamicComponentWithNoSSR/>
           <div className="p-4 sm:ml-64">
             <Navbar/>
-            <div className="p-4 border-2 border-gray-200  rounded-lg dark:border-gray-700">
-              {children}
+             <div className="p-4 border-2 border-gray-200  rounded-lg dark:border-gray-700">
+                {children}
               </div>
             </div> 
-        </body>
+          </body>
       </AuthProvider>
   </html>
   );

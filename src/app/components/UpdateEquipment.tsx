@@ -8,6 +8,7 @@ import { useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
 import TransferEquipment from './TransferEquipment';
 import AddRapportToEquipment from './AddRapportToEquipment';
+import Rapports from './Rapports';
 
 
 
@@ -17,6 +18,7 @@ const UpdateEquipment = ({id,role}:{id:string,role:string}) => {
 const [equipment,setEquipment]=useState<Equipment>({ _id:id,name:'',marque:'',service:'',quantite:0,etat:'bon',reference:'',referenceInterne:'',contactFournisseur:'',salle:''})
 const [laoding,setLoading]=useState(true)
 
+const [rapports,setRapports]=useState([])
 
 
 
@@ -38,9 +40,21 @@ useEffect(()=>{
       
         }
        }
+       async function fetchdata() {
+        setLoading(true)
+        const res=await fetch(`/api/rapports/${id}`)
+        const data = await res.json()
+        setRapports(data)
+        setLoading(false)
+      } 
+      
+       fetchdata()
        fecthequipment()
 
 },[id])
+
+
+
 
 
 
@@ -77,7 +91,8 @@ const handleClick= async()=>{
 }  
 
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2'>
+   <> 
+   <div className='grid grid-cols-1 md:grid-cols-2'>
        { !laoding? <form className=" my-5 shadow  px-5 py-5 ">
             <h1 className="text-center text-3xl m-2">Update Equipment</h1>
 
@@ -128,12 +143,15 @@ const handleClick= async()=>{
             
         </form> : Loading()
         }
-
         <div>
+
           <TransferEquipment equipment={equipment}/>
           <AddRapportToEquipment equipment={equipment} />
+
         </div>
     </div>
+           <Rapports equipments={[]} rapports={rapports} /> 
+     </>
   )
 };
 

@@ -17,9 +17,9 @@ export async function POST(req:NextRequest) {
 
     try {
         const body= await req.json()
-        const {name,equipmentID,url,date,maintenance}=body
+        const {name,equipmentID,url,date,maintenance,salle}=body
 
-        const rapport=new Rapport({name,equipmentID,url,date,maintenance})
+        const rapport=new Rapport({name,equipmentID,url,date,maintenance,salle})
         const newrapport =await rapport.save()
           
 

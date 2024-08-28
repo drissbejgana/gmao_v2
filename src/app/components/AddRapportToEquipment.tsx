@@ -2,9 +2,12 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import { Equipment } from './AddEquipment';
 
+ export type Rapport={
+  _id:string;name:string;url:string;equipmentID:string;date:string;maintenance:string;salle:string
+}
 
-
-const AddtoRapport = async (rapport:{name:string,equipmentID:string,url:string,date:string,maintenance:string}) => {
+const AddtoRapport = async (rapport:Rapport) => {
+  console.log(rapport)
   const response = await fetch('/api/rapports', {
     method: 'POST',
     headers: {
@@ -23,10 +26,10 @@ const AddtoRapport = async (rapport:{name:string,equipmentID:string,url:string,d
 
 
 const AddRapportToEquipment = ({equipment}: {equipment:Equipment}) => {
+   
     const [file, setFile] = useState(null);
-    const [raportID, setRaportID] = useState('');
     const [message, setMessage] = useState('');
-    const [rapport, setRapport] = useState<{_id:string,name:string,url:string,equipmentID:string,date:string,maintenance:string}>({_id:'',name:'',url:'',equipmentID:equipment._id,date:'',maintenance:''});
+    const [rapport, setRapport] = useState<Rapport>({_id:'',name:'',url:'',equipmentID:equipment._id,date:'',maintenance:'preventive',salle:equipment.salle});
   
     const handleFileChange = (e:any) => {
       setFile(e.target.files[0]);
@@ -35,21 +38,20 @@ const AddRapportToEquipment = ({equipment}: {equipment:Equipment}) => {
 
     const handleUpload = async (e:any) => {
       e.preventDefault();
+
+      console.log(rapport)
+      
       if (!file) {
         setMessage('Please select a file .');
         return;
       }
   
       const formData = new FormData();
-      console.log(file)
+
       formData.append('file', file);
   
       try {
  
-
-        // 
-        //  formData.append('raportID', rID)
-
         const response = await fetch('https://cliniquerrahma.ma/upload.php', {
 
           method: 'POST',
@@ -57,7 +59,7 @@ const AddRapportToEquipment = ({equipment}: {equipment:Equipment}) => {
         });
   
         const result = await response.json();
-        await AddtoRapport({...rapport,url:result.file})
+        await AddtoRapport({...rapport,url:result.file,salle:equipment.salle})
         setMessage(result.message);
         location.reload()
 
@@ -65,6 +67,7 @@ const AddRapportToEquipment = ({equipment}: {equipment:Equipment}) => {
         console.error(error);
         setMessage('File upload failed.');
       }
+
     };
   
     return (
