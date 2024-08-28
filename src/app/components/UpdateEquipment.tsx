@@ -60,7 +60,6 @@ useEffect(()=>{
 
 const handleClick= async()=>{
    
-  console.log(equipment)
 
    if(!equipment.name || !equipment.etat || !equipment.marque || !equipment.quantite || !equipment._id){
     alert('must fill required fields')
