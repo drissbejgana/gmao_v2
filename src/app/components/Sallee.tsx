@@ -200,7 +200,7 @@ const handleDelete=async(id:string)=>{
       </div>
      
     </div>
-    <Rapports equipments={equipments} rapports={rapports}/>
+     {  role=="Admin" && <Rapports equipments={equipments} rapports={rapports}/>}
     </>
   );
   

@@ -64,7 +64,6 @@ useEffect(()=>{
      if(!equipment.service){
         return
      }
-     console.log('render')
 async function fetchSallesbyService() {
 
     const res=await fetch(`/api/services/${equipment.service}`)

@@ -44,6 +44,30 @@ const { toPDF, targetRef } = usePDF({filename: 'Rapports'});
 
 
 
+    const handleDelete=async(id:string)=>{
+     
+      if (confirm("Do you want delete this Rapport!")) {
+          try {
+            const response = await fetch(`/api/rapports/${id}`, {
+              method: 'Delete',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            });
+            if(response.ok){
+              alert('deleted successfully')
+              location.reload()
+              
+            }
+        
+          } catch (error:any) {
+                throw Error('error deleting')
+          }
+      
+      }
+   
+     }
+
 
 
   return (
@@ -86,7 +110,9 @@ const { toPDF, targetRef } = usePDF({filename: 'Rapports'});
                         <th scope="col" className="px-6 py-3">
                             Link
                        </th>
-                          
+                        <th scope="col" className="px-6 py-3">
+                            Action
+                       </th>
                     </tr>
                 </thead>
                 
@@ -124,8 +150,9 @@ const { toPDF, targetRef } = usePDF({filename: 'Rapports'});
                           </Link>
                         </span>
                       </td>
-                      
-
+                       <td className=" px-6 py-4">
+                            <button onClick={(e)=>handleDelete(item._id)} className="font-medium mx-2 text-red-600 dark:text-red-500 hover:underline" >Delete</button>
+                       </td>
                     </tr>)
 
 

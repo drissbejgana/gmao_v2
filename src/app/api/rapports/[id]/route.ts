@@ -23,3 +23,24 @@ export async function GET(request: NextRequest, context: any) {
         return NextResponse.json({ error: (error as Error).message }, { status: 500 });
     }
 }
+
+
+
+export async function DELETE(request: NextRequest, context: any) {
+
+    await connectToDatabase();
+
+    const { params } = context;
+    const id = params.id;
+
+    try {
+
+             await Rapport.findByIdAndDelete(id);
+
+        return NextResponse.json({msg:'deleted'}, { status: 200 });
+
+    } catch (error) {
+        console.error('GET error:', error);
+        return NextResponse.json({ error: (error as Error).message }, { status: 500 });
+    }
+}

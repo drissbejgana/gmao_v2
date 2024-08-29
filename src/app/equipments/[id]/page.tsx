@@ -20,7 +20,6 @@ export default async function Page({params}:Props) {
   return (
         <>
             <UpdateEquipment id={params.id}  role={session?.user?.role}  />
-           
         </>
   );
 }

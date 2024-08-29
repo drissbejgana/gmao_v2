@@ -145,11 +145,11 @@ const handleClick= async()=>{
         <div>
 
           <TransferEquipment equipment={equipment}/>
-          <AddRapportToEquipment equipment={equipment} />
+       { role=="Admin" && <AddRapportToEquipment equipment={equipment} />}
 
         </div>
     </div>
-           <Rapports equipments={[]} rapports={rapports} /> 
+          { role=="Admin" && <Rapports equipments={[]} rapports={rapports} /> }
      </>
   )
 };
