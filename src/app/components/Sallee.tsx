@@ -75,7 +75,7 @@ useEffect(()=>{
 
  
 const handleDelete=async(id:string)=>{
-  try {
+  if (confirm("Do you want delete this Equipment !?")) try {
     const response = await fetch(`/api/equipments/${id}`, {
       method: 'Delete',
       headers: {
@@ -200,7 +200,7 @@ const handleDelete=async(id:string)=>{
       </div>
      
     </div>
-     {  role=="Admin" && <Rapports equipments={equipments} rapports={rapports}/>}
+     { role=="Admin" && <Rapports equipments={equipments} rapports={rapports}/>}
     </>
   );
   

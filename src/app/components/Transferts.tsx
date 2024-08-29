@@ -53,7 +53,7 @@ useEffect(()=>{
 
 
 const handleDelete=async(id:string)=>{
-  try {
+  if (confirm("Do you want delete this Tarnsfert!")) try {
     const response = await fetch(`/api/transferts/${id}`, {
       method: 'Delete',
       headers: {

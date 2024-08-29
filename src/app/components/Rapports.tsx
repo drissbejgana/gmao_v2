@@ -121,9 +121,11 @@ const { toPDF, targetRef } = usePDF({filename: 'Rapports'});
                 filtredrapports?.map((item:any)=>
                         <tr key={item._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                            {equipments.length>0 && <th className=" px-6 py-4">
-                              <span className="font-medium text-blue-600 dark:text-blue-500 hover:underline" >
+                            <Link target="_blank" className="font-medium text-blue-600 dark:text-blue-500 hover:underline" href={`/equipments/${item.equipmentID}`}>
+                                <span className="font-medium text-blue-600 dark:text-blue-500 hover:underline" >
                                   {equipments?.find((eq:any)=>eq._id==item.equipmentID)?.name}
-                              </span>
+                                </span>
+                              </Link>
                             </th>}
                             <th className=" px-6 py-4">
                               <span className="font-medium text-blue-600 dark:text-blue-500 hover:underline" >

@@ -28,7 +28,7 @@ useEffect(()=>{
 },[refersh])
 
 const handleDelete=async(id:string)=>{
-  try {
+  if (confirm("Do you want delete this Equipment !?")) try {
     const response = await fetch(`/api/stock/${id}`, {
       method: 'Delete',
       headers: {
