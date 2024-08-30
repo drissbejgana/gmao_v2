@@ -44,7 +44,7 @@ useEffect(()=>{
         setLoading(true)
         const res=await fetch(`/api/rapports/${id}`)
         const data = await res.json()
-        setRapports(data)
+        setRapports(data.rapports)
         setLoading(false)
       } 
       

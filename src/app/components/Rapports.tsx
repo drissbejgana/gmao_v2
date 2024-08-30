@@ -153,6 +153,9 @@ const { toPDF, targetRef } = usePDF({filename: 'Rapports'});
                         </span>
                       </td>
                        <td className=" px-6 py-4">
+                             <Link className="font-medium mx-2 text-blue-600 dark:text-blue-500 hover:underline" href={`/admin/rapports/${item._id}`}>
+                                        Edit
+                             </Link>
                             <button onClick={(e)=>handleDelete(item._id)} className="font-medium mx-2 text-red-600 dark:text-red-500 hover:underline" >Delete</button>
                        </td>
                     </tr>)
