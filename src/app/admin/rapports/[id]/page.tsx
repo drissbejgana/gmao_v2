@@ -82,7 +82,6 @@ const handleUpload = async (e:any) => {
   try {
 
     const response = await fetch('https://cliniquerrahma.ma/upload.php', {
-
       method: 'POST',
       body: formData,
     });
