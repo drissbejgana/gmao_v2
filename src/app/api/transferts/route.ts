@@ -10,6 +10,7 @@ if (!process.env.MONGODB_URI) {
     throw new Error('Please add your Mongo URI to .env.local');
   }
 
+export const dynamic = 'force-dynamic';
   
 export async function GET() {
     await connectToDatabase();

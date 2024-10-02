@@ -38,7 +38,7 @@ useEffect(()=>{
   
   async function fetchdata() {
     setLoading(true)
-    const res=await fetch('/api/equipments')
+    const res=await fetch('/api/equipments',{ cache: 'no-store'})
     const data = await res.json()
     setEquipments(data.equipments)
     setfiltredEquipments(data.equipments)

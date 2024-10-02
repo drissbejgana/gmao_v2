@@ -40,7 +40,7 @@ const { toPDF, targetRef } = usePDF({filename: 'Transferts'});
 useEffect(()=>{
     
    async function fetchdata() {
-        const res=await fetch('/api/transferts')
+        const res=await fetch('/api/transferts',{ cache: 'no-store',})
         const data = await res.json()
         setTransferts(data.transferts)
         setSalles(data.salles)

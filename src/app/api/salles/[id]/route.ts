@@ -4,6 +4,7 @@ import Salle from "@/app/(models)/Salle";
 import { connectToDatabase } from "@/app/utils/dbConnect";
 import { NextRequest, NextResponse } from "next/server";
 
+export const dynamic = 'force-dynamic';
 
 
 export async function GET(req:Request,context:any){

@@ -51,7 +51,7 @@ const [refersh,setRefresh]=useState(false)
 
      useEffect(()=>{
            async function fetchdata() {
-               const res=await fetch('/api/equipments')
+               const res=await fetch('/api/equipments',{ cache: 'no-store',})
                const data = await res.json()
                const panne=data.equipments.filter((item:Equipment)=>item.etat=='panne')
                setEquipments(panne)

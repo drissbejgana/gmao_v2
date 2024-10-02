@@ -4,6 +4,7 @@ import Service from "@/app/(models)/Service";
 import { connectToDatabase } from "@/app/utils/dbConnect";
 import { NextRequest, NextResponse } from "next/server"
 
+export const dynamic = 'force-dynamic';
 
 if (!process.env.MONGODB_URI) {
     throw new Error('Please add your Mongo URI to .env.local');

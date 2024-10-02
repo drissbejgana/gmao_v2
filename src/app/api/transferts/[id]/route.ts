@@ -2,6 +2,10 @@ import Transfert from "@/app/(models)/Transfert"
 import { connectToDatabase } from "@/app/utils/dbConnect"
 import { NextResponse } from "next/server"
 
+
+export const dynamic = 'force-dynamic';
+
+
 export async function DELETE(request:Request,context:any) {
     const {params}=context
     const id=params.id

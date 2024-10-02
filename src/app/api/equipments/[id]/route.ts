@@ -4,7 +4,7 @@ import { connectToDatabase } from "@/app/utils/dbConnect";
 import { transferEquipment } from "@/app/utils/functions";
 import { NextRequest, NextResponse } from "next/server";
 
-
+export const dynamic = 'force-dynamic';
 export async function POST(request: NextRequest, context: any) {
 
     await connectToDatabase();

@@ -5,6 +5,8 @@ import { connectToDatabase } from "@/app/utils/dbConnect";
 import Service from "@/app/(models)/Service";
 
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
 
     await connectToDatabase();
