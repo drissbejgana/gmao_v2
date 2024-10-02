@@ -68,8 +68,8 @@ useEffect(()=>{
 const handleUpload = async (e:any) => {
   e.preventDefault();
 
-  if(!rapport.name || !rapport.date || !rapport.url || !rapport.maintenance ){
-    alert('must fill required fields')
+  if(!rapport.name || !rapport.date || !rapport.url || !rapport.maintenance || !file ){
+     alert('must fill required fields')
     return
    }
   
@@ -77,7 +77,7 @@ const handleUpload = async (e:any) => {
 
   const formData = new FormData();
 
-  formData.append('file', file||rapport.url);
+  formData.append('file', file);
 
   try {
 
