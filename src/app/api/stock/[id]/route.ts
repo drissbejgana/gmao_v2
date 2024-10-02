@@ -4,7 +4,7 @@ import Stock from "@/app/(models)/Stock";
 import { connectToDatabase } from "@/app/utils/dbConnect";
 import { NextRequest, NextResponse } from "next/server";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-dynamic'; export const revalidate = 0;
 
 export async function POST(request: NextRequest, context: any) {
     await connectToDatabase();

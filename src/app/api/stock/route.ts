@@ -2,7 +2,7 @@ import Stock from "@/app/(models)/Stock";
 import { connectToDatabase } from "@/app/utils/dbConnect";
 import { NextRequest, NextResponse } from "next/server"
 
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-dynamic'; export const revalidate = 0;
 
 if (!process.env.MONGODB_URI) {
     throw new Error('Please add your Mongo URI to .env.local');
